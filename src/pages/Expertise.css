@@ -17,8 +17,8 @@
 }
 
 .exp-method-card:hover {
-  background-color: #0a192f;
-  border-color: var(--cyan);
+  background-color: var(--ink);
+  border-color: var(--ink);
   transform: rotate(-3deg) scale(1.04);
   box-shadow: 0 30px 60px rgba(17,17,17,0.1);
   z-index: 2;
@@ -55,6 +55,10 @@
 
 .exp-method-card:hover .exp-method-desc {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.exp-method-card:hover .exp-method-abbr {
+  color: #FFFFFF;
 }
 
 .exp-mgmt-grid {

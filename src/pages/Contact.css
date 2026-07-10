@@ -42,7 +42,7 @@
 }
 
 .dc-item:hover {
-  background-color: #0a192f;
+  background-color: var(--ink);
   border-color: var(--cyan);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   transform: translateX(6px);
