@@ -184,3 +184,12 @@ body {
   .hero-actions { flex-direction:column; }
   .hero-content { padding:calc(var(--nav-h)+32px) 24px 0; }
 }
+
+/* ── Colourful industry chips in the hero ── */
+.hero-chips .hero-chip { font-weight:600; transition:var(--tr); }
+.hero-chips .hero-chip:nth-child(1) { color:#B45309; border-color:rgba(180,83,9,.35);  background:rgba(180,83,9,.08); }   /* Oil & Gas    */
+.hero-chips .hero-chip:nth-child(2) { color:#EA580C; border-color:rgba(234,88,12,.35);  background:rgba(234,88,12,.08); }  /* Power Gen    */
+.hero-chips .hero-chip:nth-child(3) { color:#0D9488; border-color:rgba(13,148,136,.35); background:rgba(13,148,136,.08); } /* Petrochemical */
+.hero-chips .hero-chip:nth-child(4) { color:#16A34A; border-color:rgba(22,163,74,.35);  background:rgba(22,163,74,.08); }  /* Fertilizer   */
+.hero-chips .hero-chip:nth-child(5) { color:#2563EB; border-color:rgba(37,99,235,.35);  background:rgba(37,99,235,.08); }  /* Aviation     */
+.hero-chips .hero-chip:hover { transform:translateY(-2px); }
