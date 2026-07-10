@@ -1006,8 +1006,17 @@ body::after { opacity:.03; }
 }
 .trust-card:hover .trust-logo { filter:brightness(0) invert(1); }
 
-/* ── Landing hero: give "NDE" its brand colour on an otherwise mono site ── */
-.brand-nde {
+/* ── Brand gradient — the "NDE" colour, reused on headline accent words and
+   key numbers to bring life to the otherwise monochrome site ── */
+.brand-nde,
+.cyan-word,
+.text-cyan,
+h1 span[style*="var(--cyan)"],
+h2 span[style*="var(--cyan)"],
+h3 span[style*="var(--cyan)"],
+.stat-number,
+.stat-number span,
+.pub-num {
   background:linear-gradient(100deg,#15357e 0%,#2f6bd6 46%,#e11d2a 100%);
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent; color:transparent;
