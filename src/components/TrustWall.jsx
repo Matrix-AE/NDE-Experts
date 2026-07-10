@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 // Organizations Tahir Nazir has served / trained. Real brand logos live in
 // /public/logos/ (Wikimedia sources); FFBL & NCNDT use a clean monochrome
@@ -39,11 +40,64 @@ function TrustLogo({ org }) {
 }
 
 export default function TrustWall() {
+  const scrollRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    let animationFrameId;
+
+    const scroll = () => {
+      if (scrollRef.current && !isHovered) {
+        scrollRef.current.scrollLeft += 1;
+        
+        // Infinite loop logic: if scrolled to the end of the first set, reset
+        if (
+          scrollRef.current.scrollLeft >=
+          scrollRef.current.scrollWidth / 2
+        ) {
+          scrollRef.current.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered]);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="trust-grid">
-      {TRUST_ORGS.map((o) => (
-        <TrustLogo org={o} key={o.name} />
-      ))}
+    <div 
+      className="trust-wall-container" 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <button className="trust-nav-btn left" onClick={scrollLeft} aria-label="Scroll left">
+        <FiChevronLeft />
+      </button>
+
+      <div className="trust-scroll" ref={scrollRef}>
+        {/* Render the logos twice to create a seamless infinite loop */}
+        {[...TRUST_ORGS, ...TRUST_ORGS].map((o, index) => (
+          <TrustLogo org={o} key={`${o.name}-${index}`} />
+        ))}
+      </div>
+
+      <button className="trust-nav-btn right" onClick={scrollRight} aria-label="Scroll right">
+        <FiChevronRight />
+      </button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiPhone, FiMail, FiMapPin, FiSend } from 'react-icons/fi';
 import useScrollReveal from '../hooks/useScrollReveal';
 import './Contact.css';
 
@@ -61,7 +62,7 @@ export default function Contact() {
 
               <div className="dc-list">
                 <a href="tel:+923005212968" className="dc-item">
-                  <span className="dc-icon phone">&#128222;</span>
+                  <span className="dc-icon phone"><FiPhone /></span>
                   <div>
                     <div className="dc-label">Phone</div>
                     <div className="dc-value">+92 300 5212968</div>
@@ -69,7 +70,7 @@ export default function Contact() {
                 </a>
 
                 <a href="tel:+923138112968" className="dc-item">
-                  <span className="dc-icon phone">&#128222;</span>
+                  <span className="dc-icon phone"><FiPhone /></span>
                   <div>
                     <div className="dc-label">Phone</div>
                     <div className="dc-value">+92 313 8112968</div>
@@ -77,7 +78,7 @@ export default function Contact() {
                 </a>
 
                 <a href="mailto:info@ndeexperts.com" className="dc-item">
-                  <span className="dc-icon mail">&#9993;</span>
+                  <span className="dc-icon mail"><FiMail /></span>
                   <div>
                     <div className="dc-label">Email</div>
                     <div className="dc-value">info@ndeexperts.com</div>
@@ -85,7 +86,7 @@ export default function Contact() {
                 </a>
 
                 <a href="mailto:tahir.nazir@ndeexperts.com" className="dc-item">
-                  <span className="dc-icon mail">&#9993;</span>
+                  <span className="dc-icon mail"><FiMail /></span>
                   <div>
                     <div className="dc-label">Email</div>
                     <div className="dc-value">tahir.nazir@ndeexperts.com</div>
@@ -93,7 +94,7 @@ export default function Contact() {
                 </a>
 
                 <div className="dc-item" style={{ cursor: 'default' }}>
-                  <span className="dc-icon loc">&#128205;</span>
+                  <span className="dc-icon loc"><FiMapPin /></span>
                   <div>
                     <div className="dc-label">Location</div>
                     <div className="dc-value">Islamabad, Pakistan</div>
@@ -201,7 +202,7 @@ export default function Contact() {
 
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                     REQUEST INSPECTION / TRAINING
-                    <span style={{ marginLeft: '8px', fontSize: '1.2rem', transform: 'rotate(45deg)' }}>&#9992;</span>
+                    <span style={{ marginLeft: '8px', fontSize: '1.2rem', display: 'flex', alignItems: 'center' }}><FiSend /></span>
                   </button>
 
                   {sent ? (

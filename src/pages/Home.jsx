@@ -4,6 +4,7 @@ import HeroCanvas from '../components/HeroCanvas';
 import Counter from '../components/Counter';
 import useScrollReveal from '../hooks/useScrollReveal';
 import TrustWall from '../components/TrustWall';
+import SectorCarousel from '../components/SectorCarousel';
 import './Home.css';
 
 const MARQUEE_ITEMS = [
@@ -17,96 +18,15 @@ const MARQUEE_ITEMS = [
   'ISO/IEC 17020',
 ];
 
-// Sector illustrations (monochrome line art; colour follows the card via
-// currentColor, so they invert to white on hover automatically).
-const S = { fill: 'none', stroke: 'currentColor', strokeWidth: 2.2, strokeLinecap: 'round', strokeLinejoin: 'round' };
 const SECTORS = [
-  {
-    name: 'Oil & Gas',
-    icon: (
-      <svg viewBox="0 0 48 48" {...S}>
-        <path d="M15 42 L24 9 L33 42" />
-        <path d="M18.5 30 H29.5" />
-        <path d="M20.5 22 H27.5" />
-        <path d="M9 42 H39" />
-        <circle cx="24" cy="9" r="1.6" fill="currentColor" stroke="none" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Power Generation',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinejoin="round">
-        <path d="M27 5 L13 27 H22 L20 43 L35 20 H25 L27 5 Z" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Petrochemical',
-    icon: (
-      <svg viewBox="0 0 48 48" {...S}>
-        <rect x="12" y="14" width="9" height="26" rx="2" />
-        <rect x="27" y="9" width="9" height="31" rx="2" />
-        <path d="M16.5 14 V9 M31.5 9 V5" />
-        <path d="M21 21 H27 M21 30 H27" />
-        <path d="M8 40 H40" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Fertilizer',
-    icon: (
-      <svg viewBox="0 0 48 48" {...S}>
-        <path d="M24 42 V23" />
-        <path d="M24 28 C17 28 13 24 13 17 C20 17 24 21 24 28 Z" fill="currentColor" stroke="none" />
-        <path d="M24 24 C31 24 35 19 35 12 C28 12 24 17 24 24 Z" fill="currentColor" stroke="none" />
-        <path d="M16 42 H32" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Manufacturing',
-    icon: (
-      <svg viewBox="0 0 48 48" {...S}>
-        <path d="M7 42 V25 L17 31 V25 L27 31 V21 H41 V42 Z" />
-        <path d="M34 21 V12 H38 V21" />
-        <path d="M13 37 H16 M23 37 H26 M33 37 H37" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Aviation (PIA, PAC)',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none">
-        <path d="M24 5 C22.3 5 21 8 21 13 V17 L7 26 V30 L21 26 V33 L16 37 V40 L24 38 L32 40 V37 L27 33 V26 L41 30 V26 L27 17 V13 C27 8 25.7 5 24 5 Z" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Nuclear (PAEC)',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2}>
-        <circle cx="24" cy="24" r="3.2" fill="currentColor" stroke="none" />
-        <ellipse cx="24" cy="24" rx="17" ry="7.5" />
-        <ellipse cx="24" cy="24" rx="17" ry="7.5" transform="rotate(60 24 24)" />
-        <ellipse cx="24" cy="24" rx="17" ry="7.5" transform="rotate(120 24 24)" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Construction',
-    icon: (
-      <svg viewBox="0 0 48 48" {...S}>
-        <path d="M19 42 V11" />
-        <path d="M8 11 H41" />
-        <path d="M19 5 L12 11 M19 5 L26 11 M19 5 V11" />
-        <path d="M35 11 V17" />
-        <rect x="32" y="17" width="6" height="4" fill="currentColor" stroke="none" />
-        <path d="M13 42 H25" />
-        <path d="M11 11 L19 19 L27 11" />
-      </svg>
-    ),
-  },
+  { name: 'Oil & Gas', image: '/sectors/oilandgas.png' },
+  { name: 'Power Generation', image: '/sectors/powergen.png' },
+  { name: 'Petrochemical', image: '/sectors/petro.png' },
+  { name: 'Fertilizer', image: '/sectors/fertilizer.jpg' },
+  { name: 'Manufacturing', image: '/sectors/manufacturing.png' },
+  { name: 'Aviation (PIA, PAC)', image: '/sectors/aviation.png' },
+  { name: 'Nuclear (PAEC)', image: '/sectors/nuclear.png' },
+  { name: 'Construction', image: '/sectors/construction.png' },
 ];
 
 export default function Home() {
@@ -157,7 +77,7 @@ export default function Home() {
             </div>
 
             <div className="hero-actions reveal d5">
-              <Link to="/contact" className="btn btn-primary btn-lg">
+              <Link to="/contact" className="btn btn-gradient btn-lg">
                 Request Consultation
                 <span className="arrow-icon">→</span>
               </Link>
@@ -458,20 +378,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/*
-            Sector cards use monochrome line illustrations (SECTORS array above).
-            To use a real photo instead, add className "has-photo" to the card and
-            render <img src="/sectors/oil-gas.jpg" alt={s.name} /> in place of the
-            illustration — it will be desaturated to match automatically.
-          */}
-          <div className="sector-grid">
-            {SECTORS.map((s) => (
-              <div className="sector-card reveal" key={s.name}>
-                <div className="sector-illustration">{s.icon}</div>
-                <span className="sector-card-label">{s.name}</span>
-              </div>
-            ))}
-          </div>
+          <SectorCarousel sectors={SECTORS} />
         </div>
       </section>
 

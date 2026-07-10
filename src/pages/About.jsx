@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FiMapPin, FiMail, FiPhone } from 'react-icons/fi';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Counter from '../components/Counter';
 import './About.css';
@@ -9,13 +10,13 @@ export default function About() {
 
   const trackRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isManualScrolling, setIsManualScrolling] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Auto-scroll logic
+  // Auto-scroll logic (does NOT pause on hover, only pauses during drag or manual arrow scroll)
   useEffect(() => {
-    if (isHovered || isDown) return;
+    if (isDown || isManualScrolling) return;
     
     const interval = setInterval(() => {
       if (trackRef.current) {
@@ -24,7 +25,7 @@ export default function About() {
     }, 25); // Controls the speed (40px per second)
 
     return () => clearInterval(interval);
-  }, [isHovered, isDown]);
+  }, [isDown, isManualScrolling]);
 
   const getScrollAmount = () => {
     if (!trackRef.current) return 300;
@@ -34,13 +35,17 @@ export default function About() {
 
   const handleNext = () => {
     if (trackRef.current) {
+      setIsManualScrolling(true);
       trackRef.current.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      setTimeout(() => setIsManualScrolling(false), 500); // Resume auto-scroll after animation
     }
   };
 
   const handlePrev = () => {
     if (trackRef.current) {
+      setIsManualScrolling(true);
       trackRef.current.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      setTimeout(() => setIsManualScrolling(false), 500);
     }
   };
 
@@ -54,7 +59,6 @@ export default function About() {
 
   const handleMouseLeave = () => {
     setIsDown(false);
-    setIsHovered(false);
     if (trackRef.current) trackRef.current.style.cursor = 'grab';
   };
 
@@ -97,23 +101,23 @@ export default function About() {
                 <p className="profile-title">NDT Level III Consultant</p>
                 <div className="profile-contacts">
                   <span className="profile-contact-item">
-                    <span className="profile-contact-icon loc">&#128205;</span>
+                    <span className="profile-contact-icon loc"><FiMapPin /></span>
                     <span>Islamabad, Pakistan</span>
                   </span>
                   <a href="mailto:tahir.nazir@ndeexperts.com" className="profile-contact-item">
-                    <span className="profile-contact-icon mail">&#9993;</span>
+                    <span className="profile-contact-icon mail"><FiMail /></span>
                     <span>tahir.nazir@ndeexperts.com</span>
                   </a>
                   <a href="mailto:info@ndeexperts.com" className="profile-contact-item">
-                    <span className="profile-contact-icon mail">&#9993;</span>
+                    <span className="profile-contact-icon mail"><FiMail /></span>
                     <span>info@ndeexperts.com</span>
                   </a>
                   <a href="tel:+923005212968" className="profile-contact-item">
-                    <span className="profile-contact-icon phone">&#128222;</span>
+                    <span className="profile-contact-icon phone"><FiPhone /></span>
                     <span>+92 300 5212968</span>
                   </a>
                   <a href="tel:+923138112968" className="profile-contact-item">
-                    <span className="profile-contact-icon phone">&#128222;</span>
+                    <span className="profile-contact-icon phone"><FiPhone /></span>
                     <span>+92 313 8112968</span>
                   </a>
                 </div>
@@ -201,7 +205,6 @@ export default function About() {
             ref={trackRef}
             onMouseDown={handleMouseDown}
             onMouseLeave={handleMouseLeave}
-            onMouseEnter={() => setIsHovered(true)}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
           >
@@ -252,7 +255,7 @@ export default function About() {
           {/* Education & International Block Grid Below Carousel */}
           <div className="edu-grid reveal">
             <div className="edu-card gold-accent">
-              <div className="edu-card-icon">&#127891;</div>
+              <div className="edu-card-icon"><img src="/logos/pu.png" alt="University of the Punjab Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} /></div>
               <h3 className="edu-card-title">B.S. Metallurgy &amp; Materials Science</h3>
               <p className="edu-card-sub">University of the Punjab &mdash; Lahore, Pakistan<br />Strong foundation in materials behaviour, failure analysis, and manufacturing processes.</p>
               <div className="methods-list">

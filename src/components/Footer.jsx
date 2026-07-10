@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo/Logo1.png';
 
 export default function Footer() {
   return (
@@ -8,9 +9,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer-logo">
-              <div className="footer-logo-icon">TN</div>
+                <img src={logo} alt="NDE Experts" style={{ height: '40px', width: 'auto', marginRight: '4px' }} />
               <div>
-                <div className="footer-logo-name">Tahir Nazir</div>
+                <div className="footer-logo-name">NDE Experts</div>
                 <div
                   style={{
                     fontSize: 11,
@@ -20,14 +21,11 @@ export default function Footer() {
                     fontWeight: 600,
                   }}
                 >
-                  NDT Level III Expert
+                  Inspecting Today, Assurring Tomorrow
                 </div>
               </div>
             </div>
-            <p className="footer-desc">
-              30+ years of excellence in Non-Destructive Testing, Asset Integrity, and Inspection
-              Engineering across critical industrial sectors worldwide.
-            </p>
+
             <div className="footer-contact-info">
               <a href="tel:+923005212968" className="footer-ci">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -105,7 +103,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copy">
-            © 2026 Tahir Nazir. All rights reserved. NDT Level III Consultant — Islamabad, Pakistan.
+            © 2026 Tahir Nazir. All rights reserved.
           </div>
           <div className="footer-badges">
             <span className="f-badge">ASNT Member</span>

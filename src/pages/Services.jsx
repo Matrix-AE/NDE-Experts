@@ -1,11 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
+import NDTMethodsTabs from '../components/NDTMethodsTabs';
+import HexagonGrid from '../components/HexagonGrid';
 import './Services.css';
+
+const TPI_PROJECTS = [
+  "Qadirpur Gas Plant, Pakistan",
+  "Uch Power Plant, Pakistan",
+  "Rousch Power Plant, Pakistan",
+  "PAEC Nuclear Facilities",
+  "International Projects — China",
+  "International Projects — Saudi Arabia"
+];
 
 export default function Services() {
   useScrollReveal();
   const { hash } = useLocation();
+
+  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveProjectIdx((prev) => (prev + 1) % TPI_PROJECTS.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (hash) {
@@ -30,7 +50,7 @@ export default function Services() {
             <span className="pulse-dot"></span>
             What We Offer
           </div>
-          <h1>Expert NDT &amp; Inspection <span className="cyan">Services</span></h1>
+          <h1>Expert NDT &amp; Inspection <span style={{ color: "var(--cyan)" }}>Services</span></h1>
           <p className="page-hero-sub">Comprehensive solutions from advanced non-destructive testing to asset integrity, third-party oversight, and professional training.</p>
           <nav className="svc-quick-nav" aria-label="Service sections">
             <a href="#ndt" className="svc-qn-link">&#128300; NDT Inspection</a>
@@ -47,102 +67,37 @@ export default function Services() {
         <div className="section-orb section-orb-1"></div>
         <div className="section-orb section-orb-2"></div>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="svc-2col">
-            {/* Left: Method Cards */}
-            <div className="reveal-l">
-              <div className="method-grid">
-                <div className="method-card">
-                  <div className="method-icon">&#128266;</div>
-                  <div className="method-code">UT</div>
-                  <div className="method-name">Ultrasonic Testing</div>
-                  <div className="method-desc">Detection of internal flaws, cracks, and discontinuities</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#128225;</div>
-                  <div className="method-code">PAUT</div>
-                  <div className="method-name">Phased Array UT</div>
-                  <div className="method-desc">Multi-angle beam scanning with OmniScan &amp; Topaz32</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#128208;</div>
-                  <div className="method-code">TOFD</div>
-                  <div className="method-name">Time of Flight Diffraction</div>
-                  <div className="method-desc">Precise defect sizing and weld inspection</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#9762;&#65039;</div>
-                  <div className="method-code">RT</div>
-                  <div className="method-name">Radiographic Testing</div>
-                  <div className="method-desc">Conventional film and digital radiography</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#128187;</div>
-                  <div className="method-code">DIR</div>
-                  <div className="method-name">Digital Industrial Radiography</div>
-                  <div className="method-desc">Real-time DR and computed tomography</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#129522;</div>
-                  <div className="method-code">MT</div>
-                  <div className="method-name">Magnetic Particle Testing</div>
-                  <div className="method-desc">Surface and near-surface flaw detection</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#129514;</div>
-                  <div className="method-code">PT</div>
-                  <div className="method-name">Liquid Penetrant Testing</div>
-                  <div className="method-desc">Surface-breaking discontinuity detection</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#128065;&#65039;</div>
-                  <div className="method-code">VT</div>
-                  <div className="method-name">Visual Testing &amp; RVI</div>
-                  <div className="method-desc">Remote visual inspection with advanced cameras</div>
-                </div>
-                <div className="method-card">
-                  <div className="method-icon">&#128207;</div>
-                  <div className="method-code">UTM</div>
-                  <div className="method-name">Ultrasonic Thickness Measurement</div>
-                  <div className="method-desc">Corrosion monitoring and wall loss assessment</div>
-                </div>
-              </div>
-              <div className="std-tags">
-                <span className="std-tag">ASME Section V</span>
-                <span className="std-tag">API 1104</span>
-                <span className="std-tag">ISO 9712</span>
-                <span className="std-tag">ASNT SNT-TC-1A</span>
+          <div className="section-header center reveal">
+            <div className="label">NDT Inspection</div>
+            <h2 className="display-md">Advanced NDT Inspection <span style={{ color: "var(--cyan)" }}>Methods</span></h2>
+            <p className="subheading">Deployment of state-of-the-art NDT equipment and techniques for flaw detection, weld inspection, thickness gauging, and structural assessment across all critical industrial asset types.</p>
+          </div>
+
+          <div style={{ marginBottom: "60px" }}>
+            <NDTMethodsTabs />
+          </div>
+
+          <div className="std-tags reveal center" style={{ marginBottom: "40px" }}>
+            <span className="std-tag">ASME Section V</span>
+            <span className="std-tag">API 1104</span>
+            <span className="std-tag">ISO 9712</span>
+            <span className="std-tag">ASNT SNT-TC-1A</span>
+          </div>
+
+          <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+            <div className="highlight-box">
+              <div style={{ fontSize: "28px" }}>&#9881;&#65039;</div>
+              <div>
+                <div style={{ fontSize: "15px", fontWeight: 700, color: "var(--text-primary)" }}>Advanced Equipment</div>
+                <div style={{ fontSize: "14px", color: "var(--text-secondary)", marginTop: "4px" }}>Olympus OmniScan MX2, Topaz32 &amp; WeldROVER</div>
               </div>
             </div>
-            {/* Right: Text */}
-            <div className="reveal-r">
-              <div className="svc-section-label">NDT Inspection</div>
-              <h2 className="svc-section-h2">Advanced NDT Inspection Methods</h2>
-              <p className="svc-section-desc">Deployment of state-of-the-art NDT equipment and techniques for flaw detection, weld inspection, thickness gauging, and structural assessment across all critical industrial asset types.</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "32px" }}>
-                <div className="highlight-box">
-                  <div style={{ fontSize: "20px" }}>&#127942;</div>
-                  <div>
-                    <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--text-primary)" }}>ASNT Level III Certified</div>
-                    <div style={{ fontSize: "12px", color: "var(--text-secondary)" }}>UT &amp; RT &mdash; Certificate No. 209996 &mdash; the highest ASNT qualification</div>
-                  </div>
-                </div>
-                <div className="highlight-box">
-                  <div style={{ fontSize: "20px" }}>&#9881;&#65039;</div>
-                  <div>
-                    <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--text-primary)" }}>Advanced Equipment</div>
-                    <div style={{ fontSize: "12px", color: "var(--text-secondary)" }}>Olympus OmniScan MX2, Topaz32, COBRA Scanner &amp; WeldROVER deployed on site</div>
-                  </div>
-                </div>
-                <div className="highlight-box">
-                  <div style={{ fontSize: "20px" }}>&#128196;</div>
-                  <div>
-                    <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--text-primary)" }}>116+ Technical Reports</div>
-                    <div style={{ fontSize: "12px", color: "var(--text-secondary)" }}>Comprehensive documentation with actionable findings across 30+ years of field work</div>
-                  </div>
-                </div>
-              </div>
-              <Link to="/contact" className="btn btn-primary">Discuss NDT Requirements <span className="arrow-icon">&rarr;</span></Link>
-            </div>
+          </div>
+
+          <div style={{ marginTop: "50px", textAlign: "center" }}>
+            <Link to="/contact" className="btn btn-primary">
+              Discuss NDT Requirements <span className="arrow-icon">&rarr;</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -174,104 +129,73 @@ export default function Services() {
               </div>
               <Link to="/contact" className="btn btn-primary">Request Integrity Assessment <span className="arrow-icon">&rarr;</span></Link>
             </div>
-            {/* Right: Service List */}
-            <div className="reveal-r">
-              <div className="integrity-list">
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Pipeline Integrity Assessment</div>
-                    <div className="integrity-item-sub">LRUT, SRUT, PAUT &mdash; comprehensive pipeline health evaluation</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Remaining Life Assessment</div>
-                    <div className="integrity-item-sub">Quantitative RLA using validated inspection data and fracture mechanics</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Corrosion Assessment &amp; Monitoring</div>
-                    <div className="integrity-item-sub">Thickness mapping, corrosion rate determination, trend analysis</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">High-Temperature Hydrogen Attack (HTHA) Inspection</div>
-                    <div className="integrity-item-sub">Specialist HTHA detection and severity assessment for refinery equipment</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Failure Investigation &amp; Root Cause Analysis</div>
-                    <div className="integrity-item-sub">Systematic RCA with documented findings and remediation guidance</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Pre-Service &amp; In-Service Inspection (PSI / ISI)</div>
-                    <div className="integrity-item-sub">Baseline and periodic inspections per applicable code requirements</div>
-                  </div>
-                </div>
-                <div className="integrity-item">
-                  <div className="integrity-item-dot"></div>
-                  <div>
-                    <div className="integrity-item-title">Fitness-for-Service Evaluation</div>
-                    <div className="integrity-item-sub">API 579 / ASME FFS-1 assessments for continued safe operation</div>
-                  </div>
-                </div>
-              </div>
+            {/* Right: Hexagon Grid */}
+            <div className="reveal-r" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <HexagonGrid />
+            </div>
+          </div>
+          <div className="reveal center" style={{ marginTop: "20px" }}>
               <div className="notable-box">
                 <div className="notable-label">Notable Campaigns</div>
                 <div className="notable-text">FFC HTHA campaigns &middot; PSO pipeline integrity &middot; PRL reactor turnarounds (2014, 2019, 2024)</div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* SECTION C — THIRD-PARTY INSPECTION */}
       <section className="svc-section" id="tpi">
         <div className="section-orb section-orb-1"></div>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="svc-2col flip">
-            {/* Visual (appears right due to flip) */}
-            <div className="reveal-r">
-              <div className="tpi-visual">
-                <div className="tpi-visual-icon">&#9989;</div>
-                <h3>Independent Oversight You Can Trust</h3>
-                <p>TPI experience spanning oil &amp; gas, power, nuclear, and international projects across multiple continents.</p>
-                <div className="tpi-project-list">
-                  <div className="tpi-proj-item">Qadirpur Gas Plant, Pakistan</div>
-                  <div className="tpi-proj-item">Uch Power Plant, Pakistan</div>
-                  <div className="tpi-proj-item">Rousch Power Plant, Pakistan</div>
-                  <div className="tpi-proj-item">PAEC Nuclear Facilities</div>
-                  <div className="tpi-proj-item">International Projects &mdash; China</div>
-                  <div className="tpi-proj-item">International Projects &mdash; Saudi Arabia</div>
+          {/* Main Text Content */}
+          <div className="reveal" style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center", marginBottom: "48px" }}>
+            <div className="svc-section-label">Third-Party Inspection</div>
+            <h2 className="svc-section-h2">Independent Third-Party Inspection (TPI)</h2>
+            <p className="svc-section-desc" style={{ margin: "0 auto" }}>Impartial technical oversight ensuring project quality and compliance with international codes and client specifications. ISO/IEC 17020 aligned inspection body auditing experience.</p>
+          </div>
+
+          {/* Services Grid (Centered) */}
+          <div className="reveal tpi-services-grid" style={{ marginBottom: "40px" }}>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>Vendor Surveillance</div>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>QA/QC Monitoring</div>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>Fabrication Hold Point Witnessing</div>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>Technical Report Certification</div>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>Compliance Verification</div>
+            <div className="tpi-service-item"><span className="tpi-dot"></span>NDT Contractor Performance Review</div>
+            <div className="tpi-service-item" style={{ gridColumn: "1/-1" }}><span className="tpi-dot"></span>Inspection Body Auditing (ISO/IEC 17020)</div>
+          </div>
+          
+          <div className="reveal" style={{ textAlign: "center", marginBottom: "60px" }}>
+            <Link to="/contact" className="btn btn-primary">Engage TPI Services <span className="arrow-icon">&rarr;</span></Link>
+          </div>
+
+          {/* Full-width Horizontal Trust Banner */}
+          <div className="reveal tpi-banner">
+            <div className="tpi-banner-left">
+              <div className="tpi-visual-icon-wrap">
+                <div className="tpi-visual-icon">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                 </div>
               </div>
-            </div>
-            {/* Text (appears left due to flip) */}
-            <div className="reveal-l">
-              <div className="svc-section-label">Third-Party Inspection</div>
-              <h2 className="svc-section-h2">Independent Third-Party Inspection (TPI)</h2>
-              <p className="svc-section-desc">Impartial technical oversight ensuring project quality and compliance with international codes and client specifications. ISO/IEC 17020 aligned inspection body auditing experience.</p>
-              <div className="tpi-services-grid" style={{ marginBottom: "24px" }}>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>Vendor Surveillance</div>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>QA/QC Monitoring</div>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>Fabrication Hold Point Witnessing</div>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>Technical Report Certification</div>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>Compliance Verification</div>
-                <div className="tpi-service-item"><span className="tpi-dot"></span>NDT Contractor Performance Review</div>
-                <div className="tpi-service-item" style={{ gridColumn: "1/-1" }}><span className="tpi-dot"></span>Inspection Body Auditing (ISO/IEC 17020)</div>
+              <div>
+                <h3>Independent Oversight You Can Trust</h3>
+                <p>TPI experience spanning oil &amp; gas, power, nuclear, and international projects across multiple continents.</p>
               </div>
-              <Link to="/contact" className="btn btn-primary">Engage TPI Services <span className="arrow-icon">&rarr;</span></Link>
+            </div>
+            <div className="tpi-banner-right">
+              <div className="tpi-spotlight-label">Notable Campaigns</div>
+              <div className="tpi-spotlight-text-container">
+                {TPI_PROJECTS.map((project, idx) => (
+                  <div 
+                    key={idx} 
+                    className={`tpi-spotlight-text ${idx === activeProjectIdx ? 'active' : ''}`}
+                  >
+                    {project}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -308,53 +232,13 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Methods */}
-          <div style={{ marginTop: "48px" }}>
-            <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-muted)", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "16px" }}>Methods Offered</div>
-            <div className="methods-badges reveal">
-              <span className="method-badge">RT</span>
-              <span className="method-badge">UT</span>
-              <span className="method-badge">PAUT</span>
-              <span className="method-badge">TOFD</span>
-              <span className="method-badge">MT</span>
-              <span className="method-badge">PT</span>
-              <span className="method-badge">VT</span>
-              <span className="method-badge">DIR</span>
-              <span className="method-badge">Welding Inspection</span>
-              <span className="method-badge">API Standards</span>
-              <span className="method-badge">Radiation Safety</span>
-              <span className="method-badge">ASME / API / ISO Codes</span>
-            </div>
-          </div>
-
-          {/* Training Formats & Clients */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", marginTop: "48px" }} className="reveal">
-            <div>
-              <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-muted)", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "16px" }}>Training Formats</div>
-              <div className="training-formats">
-                <div className="training-format-item"><span style={{ fontSize: "16px" }}>&#127981;</span> On-site Corporate Programs</div>
-                <div className="training-format-item"><span style={{ fontSize: "16px" }}>&#127979;</span> Facility-Based Training</div>
-                <div className="training-format-item"><span style={{ fontSize: "16px" }}>&#9992;&#65039;</span> International Delivery</div>
-              </div>
-              <div className="notable-box" style={{ marginTop: "16px" }}>
-                <div className="notable-label">International Delivery</div>
-                <div className="notable-text">Delivered in Kenya (Nairobi), Bahrain (7th ME NDT Conference), and more &mdash; bringing world-class training across borders.</div>
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: "11px", fontWeight: 700, color: "var(--text-muted)", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "16px" }}>Notable Clients Trained</div>
-              <div className="client-trained-grid" style={{ marginBottom: "20px" }}>
-                <span className="client-trained-badge">PIA</span>
-                <span className="client-trained-badge">PPL</span>
-                <span className="client-trained-badge">MPCL</span>
-                <span className="client-trained-badge">FFC</span>
-                <span className="client-trained-badge">FFBL</span>
-                <span className="client-trained-badge">PAC</span>
-                <span className="client-trained-badge">NCNDT</span>
-                <span className="client-trained-badge">SGS Pakistan</span>
-              </div>
-              <Link to="/contact" className="btn btn-primary">Enquire About Training <span className="arrow-icon">&rarr;</span></Link>
-            </div>
+          <div className="reveal" style={{ textAlign: "center", marginTop: "56px" }}>
+            <p style={{ color: "var(--text-secondary)", fontSize: "16px", marginBottom: "24px", maxWidth: "600px", margin: "0 auto 24px auto" }}>
+              We offer comprehensive on-site, facility-based, and international training programs across all major NDT methods.
+            </p>
+            <Link to="/training" className="btn btn-primary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+              Explore Full Training Details <span className="arrow-icon">&rarr;</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -440,7 +324,9 @@ export default function Services() {
           </div>
           <div className="standards-grid reveal">
             <div className="std-card">
-              <div className="std-card-icon">&#127959;&#65039;</div>
+              <div className="std-card-icon">
+                <img src="/logos/asme.png" alt="ASME Logo" />
+              </div>
               <div className="std-card-code">ASME</div>
               <div className="std-card-name">American Society of Mechanical Engineers</div>
               <div className="std-card-list">
@@ -451,7 +337,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card">
-              <div className="std-card-icon">&#128738;</div>
+              <div className="std-card-icon">
+                <img src="/logos/api.png" alt="API Logo" />
+              </div>
               <div className="std-card-code">API</div>
               <div className="std-card-name">American Petroleum Institute</div>
               <div className="std-card-list">
@@ -462,7 +350,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card">
-              <div className="std-card-icon">&#127758;</div>
+              <div className="std-card-icon">
+                <img src="/logos/iso.png" alt="ISO Logo" />
+              </div>
               <div className="std-card-code">ISO</div>
               <div className="std-card-name">International Organization for Standardization</div>
               <div className="std-card-list">
@@ -473,7 +363,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card">
-              <div className="std-card-icon">&#127885;</div>
+              <div className="std-card-icon">
+                <img src="/logos/asnt.png" alt="ASNT Logo" />
+              </div>
               <div className="std-card-code">ASNT</div>
               <div className="std-card-name">American Society for Nondestructive Testing</div>
               <div className="std-card-list">
@@ -484,7 +376,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card">
-              <div className="std-card-icon">&#128297;</div>
+              <div className="std-card-icon">
+                <img src="/logos/aws.png" alt="AWS Logo" />
+              </div>
               <div className="std-card-code">AWS</div>
               <div className="std-card-name">American Welding Society</div>
               <div className="std-card-list">
@@ -495,7 +389,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card">
-              <div className="std-card-icon">&#9883;&#65039;</div>
+              <div className="std-card-icon">
+                <img src="/logos/french.png" alt="RCC-M Logo" />
+              </div>
               <div className="std-card-code">RCC-M / RSE-M</div>
               <div className="std-card-name">French Nuclear Codes</div>
               <div className="std-card-list">
@@ -506,7 +402,9 @@ export default function Services() {
               </div>
             </div>
             <div className="std-card" style={{ gridColumn: "span 2" }}>
-              <div className="std-card-icon">&#127477;&#127472;</div>
+              <div className="std-card-icon">
+                <img src="/logos/pnra.png" alt="PNRA Logo" />
+              </div>
               <div className="std-card-code">PNRA</div>
               <div className="std-card-name">Pakistan Nuclear Regulatory Authority</div>
               <div className="std-card-list" style={{ flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>

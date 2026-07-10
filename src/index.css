@@ -486,7 +486,7 @@ section { position:relative; z-index:1; }
 /* ══════════════════════════════
    FILTER TABS
 ══════════════════════════════ */
-.filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:48px; }
+.filter-row { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-bottom:48px; }
 .filter-btn {
   font-size:13px; font-weight:500; color:var(--text-secondary);
   padding:8px 20px; border-radius:100px;
@@ -869,6 +869,8 @@ body::after {
 /* ── Buttons: elegant solid ink / clean outline ── */
 .btn-primary { background:var(--ink); color:#fff; box-shadow:0 6px 22px rgba(17,17,17,0.16); }
 .btn-primary:hover { background:#000; box-shadow:0 12px 34px rgba(17,17,17,0.26); }
+.btn-gradient { background:linear-gradient(100deg,#15357e 0%,#2f6bd6 46%,#e11d2a 100%); color:#fff; box-shadow:0 6px 22px rgba(47,107,214,0.16); border: none; }
+.btn-gradient:hover { box-shadow:0 12px 34px rgba(47,107,214,0.3); transform:translateY(-2px); color:#fff; }
 .btn-secondary { background:#fff; color:var(--text-primary); border:1px solid rgba(17,17,17,0.18); backdrop-filter:none; }
 .btn-secondary:hover { background:var(--bg-secondary); border-color:var(--ink); color:var(--ink); }
 .nav-cta { background:var(--ink); }
@@ -951,30 +953,73 @@ body::after { opacity:.03; }
   .marquee-track { animation:none !important; }
 }
 
-/* ── Cards flip to black with white text on hover ── */
-.svc-card:hover { background:var(--ink); border-color:var(--ink); }
+/* ── Cards transition to completely distinct pastel colors on hover ── */
+.svc-card:nth-child(1) { --svc-hover-bg: #FCE8E8; --svc-hover-border: #FCA5A5; } /* Red/Pink */
+.svc-card:nth-child(2) { --svc-hover-bg: #FFEDD5; --svc-hover-border: #FDBA74; } /* Orange */
+.svc-card:nth-child(3) { --svc-hover-bg: #FEF9C3; --svc-hover-border: #FDE047; } /* Yellow */
+.svc-card:nth-child(4) { --svc-hover-bg: #DCFCE7; --svc-hover-border: #86EFAC; } /* Green */
+.svc-card:nth-child(5) { --svc-hover-bg: #DBEAFE; --svc-hover-border: #93C5FD; } /* Blue */
+.svc-card:nth-child(6) { --svc-hover-bg: #F3E8FF; --svc-hover-border: #D8B4FE; } /* Purple */
+
+.svc-card:hover { 
+  background-color: var(--svc-hover-bg); 
+  border-color: var(--svc-hover-border); 
+}
+
+/* Keep text readable */
 .svc-card:hover .svc-title,
 .svc-card:hover .svc-text,
-.svc-card:hover .svc-link { color:#fff; }
-.svc-card:hover .svc-list li { color:rgba(255,255,255,0.82); }
-.svc-card:hover .svc-list li::before { background:#fff; }
-.svc-card:hover .svc-icon { background:#fff; color:var(--ink); }
-.svc-card:hover::after { background:#fff; }
+.svc-card:hover .svc-link { color:var(--text-primary); }
+.svc-card:hover .svc-list li { color:var(--text-secondary); }
+.svc-card:hover .svc-list li::before { background:var(--ink); }
+.svc-card:hover .svc-icon { background:var(--svc-hover-border); color:var(--ink); }
+.svc-card:hover::after { background:var(--ink); }
 
-/* ── Trusted-by logo wall — clean white cards, real colour logos ── */
-.trust-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
-  gap:16px; max-width:1020px; margin:0 auto;
+/* ── Trusted-by logo wall — carousel styles ── */
+.trust-wall-container {
+  position:relative;
+  display:flex; align-items:center;
+  max-width:1020px; margin:0 auto;
 }
+.trust-nav-btn {
+  position:absolute; z-index:10;
+  display:flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255, 255, 255, 0.9);
+  border:1px solid var(--glass-border);
+  box-shadow:0 4px 12px rgba(17,17,17,0.1);
+  color:var(--ink); font-size:24px;
+  cursor:pointer; transition:var(--tr);
+}
+.trust-nav-btn:hover {
+  background:#fff;
+  transform:scale(1.1);
+  box-shadow:0 6px 16px rgba(17,17,17,0.15);
+}
+.trust-nav-btn.left { left:-20px; }
+.trust-nav-btn.right { right:-20px; }
+
+.trust-scroll {
+  display:flex; gap:16px;
+  overflow-x:hidden; scroll-behavior:auto;
+  padding:20px 0; /* Add padding for hover effects */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.trust-scroll::-webkit-scrollbar { display: none; }
+/* Hide scrollbar for IE, Edge and Firefox */
+.trust-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
 .trust-card {
   display:flex; align-items:center; justify-content:center; text-align:center;
-  min-height:112px; padding:22px 18px; background:#fff;
+  min-height:112px; width:220px; flex-shrink:0; padding:22px 18px; background:#fff;
   border:1px solid var(--glass-border); border-radius:16px;
   transition:transform var(--tr), box-shadow var(--tr), border-color var(--tr);
 }
 .trust-card:hover {
-  border-color:var(--glass-border-hover);
-  transform:translateY(-5px); box-shadow:0 22px 46px rgba(17,17,17,0.12);
+  border-color:#2f6bd6;
+  transform:scale(1.1);
+  box-shadow:0 0 20px rgba(47,107,214,0.4);
+  z-index: 5;
 }
 .trust-name {
   font-family:var(--font-display); font-weight:800; font-size:20px;
