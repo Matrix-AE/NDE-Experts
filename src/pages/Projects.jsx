@@ -199,8 +199,8 @@ export default function Projects() {
           </div>
 
           <div className="proj-grid filter-container">
-            {PROJECTS.filter(p => isVisible(p.category) || p.category === 'all').map((proj, i) => (
-              <div key={proj.id} className={`proj-card reveal d${(i % 6) + 1}`}>
+            {PROJECTS.filter(p => isVisible(p.category) || p.category === 'all').map((proj) => (
+              <div key={proj.id} className={`proj-card reveal d${(proj.id % 6) + 1}`}>
                 <div className="proj-card-img">
                   <div className="proj-card-img-placeholder">
                     {proj.svg}

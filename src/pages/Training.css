@@ -21,7 +21,6 @@
   position: absolute;
   top: -50%; left: -50%; width: 200%; height: 200%;
   background: conic-gradient(transparent, transparent, transparent, var(--cyan));
-  animation: tr-spin-bg 2.5s linear infinite;
   z-index: -2;
   opacity: 0;
   transition: opacity 0.4s;
@@ -50,6 +49,7 @@
 
 .tr-level-card:hover::before {
   opacity: 1;
+  animation: tr-spin-bg 2.5s linear infinite;
 }
 
 .tr-level-card:hover::after {
@@ -64,6 +64,10 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 12px;
+  transition: color 0.4s ease;
+}
+.tr-level-card .tag {
+  transition: color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .tr-level-title {

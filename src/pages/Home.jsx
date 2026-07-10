@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import HeroCanvas from '../components/HeroCanvas';
 import Counter from '../components/Counter';
 import useScrollReveal from '../hooks/useScrollReveal';
+import TrustWall from '../components/TrustWall';
 import './Home.css';
 
 const MARQUEE_ITEMS = [
@@ -15,44 +16,6 @@ const MARQUEE_ITEMS = [
   'Third-Party Inspection',
   'ISO/IEC 17020',
 ];
-
-// Organizations Tahir Nazir has served / trained. Each renders its logo from
-// /public/logos/<slug>.svg (placeholder marks ship now — drop a real
-// /public/logos/<slug>.png or .svg with the same name to replace it).
-const TRUST_ORGS = [
-  { name: 'PIA', sub: 'Aviation', slug: 'pia' },
-  { name: 'PPL', sub: 'Oil & Gas', slug: 'ppl' },
-  { name: 'MPCL', sub: 'Exploration', slug: 'mpcl' },
-  { name: 'FFC', sub: 'Fertilizer', slug: 'ffc' },
-  { name: 'FFBL', sub: 'Fertilizer', slug: 'ffbl' },
-  { name: 'PAC', sub: 'Aeronautical', slug: 'pac' },
-  { name: 'NCNDT', sub: 'National Centre', slug: 'ncndt' },
-  { name: 'SGS', sub: 'Inspection', slug: 'sgs' },
-  { name: 'PAEC', sub: 'Nuclear', slug: 'paec' },
-];
-
-// Shows the org logo image; falls back to a clean wordmark if the file is missing.
-function TrustLogo({ org }) {
-  const [imgOk, setImgOk] = useState(true);
-  return (
-    <div className="trust-card reveal">
-      {imgOk ? (
-        <img
-          className="trust-logo"
-          src={`/logos/${org.slug}.svg`}
-          alt={`${org.name} logo`}
-          loading="lazy"
-          onError={() => setImgOk(false)}
-        />
-      ) : (
-        <div className="trust-name">
-          {org.name}
-          <span className="trust-sub">{org.sub}</span>
-        </div>
-      )}
-    </div>
-  );
-}
 
 // Sector illustrations (monochrome line art; colour follows the card via
 // currentColor, so they invert to white on hover automatically).
@@ -268,7 +231,7 @@ export default function Home() {
       {/* ══════════════════════════════ SERVICES ══════════════════════════════ */}
       <section className="section-pb">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header center">
             <div className="label">Core Services</div>
             <h2 className="display-md">
               Comprehensive NDT
@@ -442,11 +405,7 @@ export default function Home() {
               industrial institutions.
             </p>
           </div>
-          <div className="trust-grid">
-            {TRUST_ORGS.map((o) => (
-              <TrustLogo org={o} key={o.name} />
-            ))}
-          </div>
+          <TrustWall />
         </div>
       </section>
 

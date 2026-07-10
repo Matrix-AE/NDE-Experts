@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Counter from '../components/Counter';
+import TrustWall from '../components/TrustWall';
 import './Training.css';
 
 export default function Training() {
@@ -140,18 +141,9 @@ export default function Training() {
           <div className="section-header center">
             <div className="label">Organizations Trained</div>
             <h2 className="display-md">Trusted by Leading <span style={{ color: 'var(--cyan)' }}>Institutions</span></h2>
+            <p className="subheading">Over 1,000 professionals trained for Pakistan's foremost aviation, energy, fertilizer and nuclear organizations.</p>
           </div>
-          <div className="client-marquee">
-            <span className="badge gold">PIA</span>
-            <span className="badge gold">PPL</span>
-            <span className="badge gold">MPCL</span>
-            <span className="badge gold">FFC</span>
-            <span className="badge gold">FFBL</span>
-            <span className="badge gold">PAC</span>
-            <span className="badge gold">NCNDT</span>
-            <span className="badge gold">SGS Pakistan</span>
-            <span className="badge gold">PAEC</span>
-          </div>
+          <TrustWall />
         </div>
       </section>
 

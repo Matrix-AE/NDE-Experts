@@ -172,7 +172,7 @@ body {
 .step-text { font-size:13px; color:var(--text-secondary); line-height:1.6; }
 
 @media(max-width:900px) {
-  .hero-content { grid-template-columns:1fr; min-height:auto; padding-top:calc(var(--nav-h)+48px); gap:40px; }
+  .hero-content { min-height:auto; padding-top:calc(var(--nav-h)+48px); }
   .hero-visual { display:none; }
   .services-preview-grid,.fp-grid { grid-template-columns:repeat(2,1fr); }
   .process-steps { grid-template-columns:repeat(2,1fr); gap:32px; }

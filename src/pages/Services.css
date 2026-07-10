@@ -160,8 +160,8 @@
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .tpi-visual:hover {
-  background:linear-gradient(135deg,#081525 0%,#0D1E35 100%);
-  border-color:var(--cyan);
+  background:var(--ink);
+  border-color:var(--ink);
   transform:translateY(-4px);
   box-shadow:0 24px 56px rgba(17,17,17,0.1);
 }
