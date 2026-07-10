@@ -2,6 +2,40 @@ import { Link } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
 import './Expertise.css';
 
+const STANDARD_GROUPS = [
+  {
+    title: 'Construction & Inspection Codes',
+    items: [
+      { code: 'ASME', desc: 'Boiler & Pressure Vessel Code, incl. Section V (NDE).' },
+      { code: 'API', desc: 'Petroleum-industry inspection — 510 / 570 / 653.' },
+      { code: 'AWS', desc: 'American Welding Society — D1.1 structural welding.' },
+    ],
+  },
+  {
+    title: 'NDT Personnel Certification',
+    items: [
+      { code: 'ASNT SNT-TC-1A', desc: 'Recommended practice for NDT personnel qualification.' },
+      { code: 'ISO 9712', desc: 'International NDT personnel certification scheme.' },
+    ],
+  },
+  {
+    title: 'Nuclear & International Codes',
+    items: [
+      { code: 'RCC-M', desc: 'French design & construction code for nuclear components.' },
+      { code: 'RSE-M', desc: 'In-service inspection rules for nuclear power plants.' },
+      { code: 'Chinese Codes', desc: 'National standards — NB/T & GB series.' },
+    ],
+  },
+  {
+    title: 'Accreditation & Management Systems',
+    items: [
+      { code: 'ISO/IEC 17020', desc: 'Requirements for the operation of inspection bodies.' },
+      { code: 'ISO/IEC 17024', desc: 'Conformity assessment — certification of persons.' },
+      { code: 'ISO/IEC 17025', desc: 'Competence of testing & calibration laboratories.' },
+    ],
+  },
+];
+
 export default function Expertise() {
   useScrollReveal();
 
@@ -77,18 +111,29 @@ export default function Expertise() {
             <h2 className="display-md">Standards <span style={{ color: 'var(--cyan)' }}>Compliance</span></h2>
             <p className="subheading">Procedures and written practices are developed, reviewed, and implemented in strict accordance with the following codes and management-system standards.</p>
           </div>
-          <div className="badge-grid">
-            <span className="badge">ASME</span>
-            <span className="badge">API</span>
-            <span className="badge">AWS</span>
-            <span className="badge">ASNT SNT-TC-1A</span>
-            <span className="badge">ISO 9712</span>
-            <span className="badge">RCC-M</span>
-            <span className="badge">RSE-M</span>
-            <span className="badge">Chinese Codes (NB/T, GB)</span>
-            <span className="badge">ISO/IEC 17020</span>
-            <span className="badge">ISO/IEC 17024</span>
-            <span className="badge">ISO/IEC 17025</span>
+          <div className="std-groups">
+            {STANDARD_GROUPS.map((group) => (
+              <div className="std-group reveal" key={group.title}>
+                <div className="std-group-head">
+                  <span className="std-group-line"></span>
+                  {group.title}
+                </div>
+                <div className="std-card-grid">
+                  {group.items.map((s) => (
+                    <div className="std-card" key={s.code}>
+                      <div className="std-card-top">
+                        <svg className="std-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 2l7 3v6c0 5-3.5 8.2-7 9-3.5-.8-7-4-7-9V5z" />
+                          <path d="M9 12l2 2 4-4" />
+                        </svg>
+                        <span className="std-code">{s.code}</span>
+                      </div>
+                      <p className="std-desc">{s.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -80,3 +80,35 @@
 @media(max-width: 600px) {
   .exp-method-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Standards Compliance — prominent grouped standard cards ── */
+.std-groups { display: flex; flex-direction: column; gap: 40px; }
+.std-group-head {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-tertiary);
+  margin-bottom: 18px;
+}
+.std-group-line { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; flex-shrink: 0; }
+.std-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.std-card {
+  background: var(--bg-card); border: 1px solid var(--glass-border);
+  border-radius: 16px; padding: 22px 24px; transition: var(--tr);
+}
+.std-card:hover {
+  background: var(--ink); border-color: var(--ink);
+  transform: translateY(-4px); box-shadow: 0 22px 48px rgba(17,17,17,0.14);
+}
+.std-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.std-check { width: 26px; height: 26px; color: var(--ink); flex-shrink: 0; transition: var(--tr); }
+.std-card:hover .std-check { color: #fff; }
+.std-code {
+  font-family: var(--font-display); font-size: 19px; font-weight: 800;
+  letter-spacing: -0.3px; color: var(--text-primary); transition: var(--tr);
+}
+.std-card:hover .std-code { color: #fff; }
+.std-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; transition: var(--tr); }
+.std-card:hover .std-desc { color: rgba(255,255,255,0.8); }
+
+@media (max-width: 900px) { .std-card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .std-card-grid { grid-template-columns: 1fr; } }
