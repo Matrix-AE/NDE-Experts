@@ -1,0 +1,16 @@
+/* Publications Page specific */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media(max-width: 600px) {
+  .pub-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pub-num {
+    text-align: left;
+  }
+}

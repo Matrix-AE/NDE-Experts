@@ -1,0 +1,28 @@
+/* Projects Page specific */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media(max-width: 900px) {
+  .proj-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 768px) {
+  .proj-stats-accordion {
+    flex-direction: column;
+    height: auto;
+  }
+  .proj-stat-item {
+    height: 120px;
+  }
+}
+
+@media(max-width: 600px) {
+  .proj-grid {
+    grid-template-columns: 1fr;
+  }
+}

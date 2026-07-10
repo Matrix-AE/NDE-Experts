@@ -1,0 +1,51 @@
+/* Certifications Page specific */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.intl-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.intl-cert-item {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: var(--tr);
+}
+
+.intl-cert-item:hover {
+  border-color: rgba(17,17,17, 0.25);
+  transform: translateY(-3px);
+}
+
+.intl-cert-flag {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.intl-cert-country {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.intl-cert-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+@media(max-width: 900px) {
+  .cert-grid { grid-template-columns: 1fr; }
+  .intl-cert-grid { grid-template-columns: 1fr; }
+}

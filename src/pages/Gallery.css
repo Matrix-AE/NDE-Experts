@@ -1,0 +1,19 @@
+/* Gallery Page specific */
+.gallery-item-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--bg-tertiary), #E5EDF7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--tr-slow);
+}
+
+.gallery-item:hover .gallery-item-placeholder {
+  transform: scale(1.06);
+}
+
+.gallery-item-icon {
+  font-size: 40px;
+  opacity: .55;
+}
