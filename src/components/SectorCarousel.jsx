@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { asset } from '../lib/asset';
 import './SectorCarousel.css';
 
 export default function SectorCarousel({ sectors }) {
@@ -43,7 +44,7 @@ export default function SectorCarousel({ sectors }) {
                 transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
                 opacity,
                 zIndex,
-                backgroundImage: `url(${sector.image})`
+                backgroundImage: `url(${asset(sector.image)})`
               }}
               onClick={() => setActiveIndex(i)}
             >

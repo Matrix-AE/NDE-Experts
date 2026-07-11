@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { asset } from '../lib/asset';
 import { Link } from 'react-router-dom';
 import { FiMapPin, FiMail, FiPhone } from 'react-icons/fi';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -255,7 +256,7 @@ export default function About() {
           {/* Education & International Block Grid Below Carousel */}
           <div className="edu-grid reveal">
             <div className="edu-card gold-accent">
-              <div className="edu-card-icon"><img src="/logos/pu.png" alt="University of the Punjab Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} /></div>
+              <div className="edu-card-icon"><img src={asset("/logos/pu.png")} alt="University of the Punjab Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} /></div>
               <h3 className="edu-card-title">B.S. Metallurgy &amp; Materials Science</h3>
               <p className="edu-card-sub">University of the Punjab &mdash; Lahore, Pakistan<br />Strong foundation in materials behaviour, failure analysis, and manufacturing processes.</p>
               <div className="methods-list">

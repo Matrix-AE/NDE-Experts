@@ -29,7 +29,7 @@ export default function App() {
   usePageFadeIn();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <div className="grid-bg"></div>
       <Navbar />

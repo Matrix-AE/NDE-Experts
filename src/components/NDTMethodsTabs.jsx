@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { asset } from '../lib/asset';
 import './NDTMethodsTabs.css';
 
 const NDT_METHODS = [
@@ -39,7 +40,7 @@ export default function NDTMethodsTabs() {
       <div className="ndt-tabs-panel">
         <div 
           className="ndt-panel-bg-image" 
-          style={{ backgroundImage: `url(${activeMethod.image})` }}
+          style={{ backgroundImage: `url(${asset(activeMethod.image)})` }}
         ></div>
         <div className="ndt-panel-overlay"></div>
         

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { asset } from '../lib/asset';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 // Organizations Tahir Nazir has served / trained. Real brand logos live in
@@ -24,7 +25,7 @@ function TrustLogo({ org }) {
       {ok ? (
         <img
           className="trust-logo"
-          src={org.logo}
+          src={asset(org.logo)}
           alt={`${org.name} logo`}
           loading="lazy"
           onError={() => setOk(false)}

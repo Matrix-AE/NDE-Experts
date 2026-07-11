@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { asset } from '../lib/asset';
 import { SlBadge } from "react-icons/sl";
 import useScrollReveal from '../hooks/useScrollReveal';
 import './Certifications.css';
@@ -26,7 +27,7 @@ export default function Certifications() {
           </div>
           <div className="cert-grid">
             <div className="cert-card reveal">
-              <div className="cert-icon"><img src="/logos/asnt.png" alt="ASNT" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
+              <div className="cert-icon"><img src={asset("/logos/asnt.png")} alt="ASNT" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">ASNT NDT Level III</div>
                 <div className="cert-body">Ultrasonic Testing (UT) &amp; Radiographic Testing (RT) — the highest personnel qualification level recognized under ASNT SNT-TC-1A.</div>
@@ -34,7 +35,7 @@ export default function Certifications() {
               </div>
             </div>
             <div className="cert-card reveal">
-              <div className="cert-icon"><img src="/logos/pec.png" alt="PEC" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
+              <div className="cert-icon"><img src={asset("/logos/pec.png")} alt="PEC" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">PEC Registered Engineer</div>
                 <div className="cert-body">Registered with the Pakistan Engineering Council, affirming professional engineering standing and accountability.</div>
@@ -42,7 +43,7 @@ export default function Certifications() {
               </div>
             </div>
             <div className="cert-card reveal">
-              <div className="cert-icon"><img src="/logos/pnac.png" alt="PNAC" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
+              <div className="cert-icon"><img src={asset("/logos/pnac.png")} alt="PNAC" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">PNAC Technical Expert</div>
                 <div className="cert-body">Recognized Technical Expert with the Pakistan National Accreditation Council, supporting laboratory and inspection body accreditation.</div>
@@ -50,7 +51,7 @@ export default function Certifications() {
               </div>
             </div>
             <div className="cert-card reveal">
-              <div className="cert-icon"><img src="/logos/asnt.png" alt="ASNT" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
+              <div className="cert-icon"><img src={asset("/logos/asnt.png")} alt="ASNT" style={{ width: '48px', height: '48px', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">ASNT Professional Member</div>
                 <div className="cert-body">Active professional member of the American Society for Nondestructive Testing (ASNT).</div>

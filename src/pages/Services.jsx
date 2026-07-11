@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { asset } from '../lib/asset';
 import { Link, useLocation } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
 import NDTMethodsTabs from '../components/NDTMethodsTabs';
@@ -325,7 +326,7 @@ export default function Services() {
           <div className="standards-grid reveal">
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/asme.png" alt="ASME Logo" />
+                <img src={asset("/logos/asme.png")} alt="ASME Logo" />
               </div>
               <div className="std-card-code">ASME</div>
               <div className="std-card-name">American Society of Mechanical Engineers</div>
@@ -338,7 +339,7 @@ export default function Services() {
             </div>
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/api.png" alt="API Logo" />
+                <img src={asset("/logos/api.png")} alt="API Logo" />
               </div>
               <div className="std-card-code">API</div>
               <div className="std-card-name">American Petroleum Institute</div>
@@ -351,7 +352,7 @@ export default function Services() {
             </div>
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/iso.png" alt="ISO Logo" />
+                <img src={asset("/logos/iso.png")} alt="ISO Logo" />
               </div>
               <div className="std-card-code">ISO</div>
               <div className="std-card-name">International Organization for Standardization</div>
@@ -364,7 +365,7 @@ export default function Services() {
             </div>
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/asnt.png" alt="ASNT Logo" />
+                <img src={asset("/logos/asnt.png")} alt="ASNT Logo" />
               </div>
               <div className="std-card-code">ASNT</div>
               <div className="std-card-name">American Society for Nondestructive Testing</div>
@@ -377,7 +378,7 @@ export default function Services() {
             </div>
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/aws.png" alt="AWS Logo" />
+                <img src={asset("/logos/aws.png")} alt="AWS Logo" />
               </div>
               <div className="std-card-code">AWS</div>
               <div className="std-card-name">American Welding Society</div>
@@ -390,7 +391,7 @@ export default function Services() {
             </div>
             <div className="std-card">
               <div className="std-card-icon">
-                <img src="/logos/french.png" alt="RCC-M Logo" />
+                <img src={asset("/logos/french.png")} alt="RCC-M Logo" />
               </div>
               <div className="std-card-code">RCC-M / RSE-M</div>
               <div className="std-card-name">French Nuclear Codes</div>
@@ -403,7 +404,7 @@ export default function Services() {
             </div>
             <div className="std-card" style={{ gridColumn: "span 2" }}>
               <div className="std-card-icon">
-                <img src="/logos/pnra.png" alt="PNRA Logo" />
+                <img src={asset("/logos/pnra.png")} alt="PNRA Logo" />
               </div>
               <div className="std-card-code">PNRA</div>
               <div className="std-card-name">Pakistan Nuclear Regulatory Authority</div>
