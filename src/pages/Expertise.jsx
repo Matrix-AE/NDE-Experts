@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom';
 import useScrollReveal from '../hooks/useScrollReveal';
+import { asset } from '../lib/asset';
+import SectorCarousel from '../components/SectorCarousel';
 import './Expertise.css';
+
+const SECTORS = [
+  { name: 'Oil & Gas', image: '/sectors/oilandgas.png' },
+  { name: 'Power Generation', image: '/sectors/powergen.png' },
+  { name: 'Petrochemical', image: '/sectors/petro.png' },
+  { name: 'Fertilizer', image: '/sectors/fertilizer.jpg' },
+  { name: 'Manufacturing', image: '/sectors/manufacturing.png' },
+  { name: 'Aviation (PIA, PAC)', image: '/sectors/aviation.png' },
+  { name: 'Construction', image: '/sectors/construction.png' },
+];
 
 const STANDARD_GROUPS = [
   {
@@ -146,21 +158,21 @@ export default function Expertise() {
           </div>
           <div className="exp-mgmt-grid">
             <div className="cert-card reveal">
-              <div className="cert-icon">&#128300;</div>
+              <div className="cert-icon"><img src={asset('/logos/iso.png')} alt="ISO Logo" style={{ width: '85%', height: '85%', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">ISO/IEC 17020</div>
                 <div className="cert-body">Requirements for the operation of various types of inspection bodies — applied throughout laboratory and field inspection operations.</div>
               </div>
             </div>
             <div className="cert-card reveal">
-              <div className="cert-icon">&#127891;</div>
+              <div className="cert-icon"><img src={asset('/logos/iso.png')} alt="ISO Logo" style={{ width: '85%', height: '85%', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">ISO/IEC 17024</div>
                 <div className="cert-body">Conformity assessment for bodies certifying persons — underpins NDT personnel qualification and certification programs.</div>
               </div>
             </div>
             <div className="cert-card reveal">
-              <div className="cert-icon">&#129514;</div>
+              <div className="cert-icon"><img src={asset('/logos/iso.png')} alt="ISO Logo" style={{ width: '85%', height: '85%', objectFit: 'contain' }} /></div>
               <div>
                 <div className="cert-title">ISO/IEC 17025</div>
                 <div className="cert-body">General requirements for the competence of testing and calibration laboratories, guiding lab accreditation activities.</div>
@@ -177,16 +189,7 @@ export default function Expertise() {
             <div className="label">Industries Served</div>
             <h2 className="display-md">Trusted Across <span style={{ color: 'var(--cyan)' }}>Critical Sectors</span></h2>
           </div>
-          <div className="ind-grid">
-            <div className="ind-item reveal"><span className="ind-icon">&#128737;&#65039;</span><span className="ind-name">Oil &amp; Gas</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#9889;</span><span className="ind-name">Power Generation</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#129514;</span><span className="ind-name">Petrochemical</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#127807;</span><span className="ind-name">Fertilizer</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#127981;</span><span className="ind-name">Manufacturing</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#9992;&#65039;</span><span className="ind-name">Aviation (PIA, PAC)</span></div>
-
-            <div className="ind-item reveal"><span className="ind-icon">&#127959;&#65039;</span><span className="ind-name">Construction</span></div>
-          </div>
+          <SectorCarousel sectors={SECTORS} />
         </div>
       </section>
 
