@@ -8,7 +8,7 @@ const FILTERS = [
   { id: 'all', label: 'All Projects' },
   { id: 'oilgas', label: 'Oil & Gas' },
   { id: 'international', label: 'International' },
-  { id: 'petrochem', label: 'Petrochemical / Nuclear' },
+  { id: 'petrochem', label: 'Petrochemical' },
   { id: 'fertilizer', label: 'Fertilizer' },
   { id: 'aviation', label: 'Aviation' }
 ];
@@ -107,20 +107,7 @@ const PROJECTS = [
       </svg>
     )
   },
-  {
-    id: 8,
-    category: 'petrochem',
-    sector: 'Nuclear',
-    goldSector: true,
-    title: 'PAEC — Nuclear-Grade Component Examination',
-    text: 'Inspection of nuclear-grade components in accordance with RCC-M and RSE-M codes, applying stringent acceptance criteria for critical safety systems.',
-    tags: ['RCC-M', 'RSE-M', 'UT', 'Critical Safety'],
-    svg: (
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(17,17,17,0.3)" strokeWidth="1.2">
-        <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/>
-      </svg>
-    )
-  },
+
   {
     id: 9,
     category: 'all',
@@ -149,7 +136,7 @@ export default function Projects() {
         <div className="container">
           <div className="page-hero-tag"><span className="label">Our Track Record</span></div>
           <h1 className="page-hero-title">Projects &amp;<br/><span style={{ color: 'var(--cyan)' }}>Field Assignments</span></h1>
-          <p className="page-hero-sub">A cross-section of inspection, integrity assessment, and quality control assignments delivered across Pakistan and internationally — spanning power generation, oil &amp; gas, petrochemical, fertilizer, aviation, and nuclear sectors.</p>
+          <p className="page-hero-sub">A cross-section of inspection, integrity assessment, and quality control assignments delivered across Pakistan and internationally — spanning power generation, oil &amp; gas, petrochemical, fertilizer, and aviation sectors.</p>
         </div>
       </section>
 

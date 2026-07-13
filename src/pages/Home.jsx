@@ -24,8 +24,6 @@ const SECTORS = [
   { name: 'Petrochemical', image: '/sectors/petro.png' },
   { name: 'Fertilizer', image: '/sectors/fertilizer.jpg' },
   { name: 'Manufacturing', image: '/sectors/manufacturing.png' },
-  { name: 'Aviation (PIA, PAC)', image: '/sectors/aviation.png' },
-  { name: 'Nuclear (PAEC)', image: '/sectors/nuclear.png' },
   { name: 'Construction', image: '/sectors/construction.png' },
 ];
 

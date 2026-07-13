@@ -7,7 +7,7 @@
 **30+ years of uncompromising inspection.** The official website of **Tahir Nazir** —
 ASNT NDT Level III Consultant (Cert. No. 209996) — showcasing services, technical
 expertise, projects, credentials and training across the Oil & Gas, Power, Petrochemical,
-Fertilizer, Aviation and Nuclear sectors.
+Fertilizer and Aviation sectors.
 
 Refined **black‑and‑white** design · fully responsive · accessible · smooth by default.
 
@@ -21,9 +21,9 @@ Refined **black‑and‑white** design · fully responsive · accessible · smoo
   brand *NDE* gradient (blue→red) used sparingly on the hero, headings and key numbers to
   add life without clutter.
 - **Clear service & course catalog** — bold, scannable service cards and a detailed
-  Standards‑Compliance section (ASME, API, AWS, ISO 9712, ISO/IEC 17020/24/25, RCC‑M…).
+  Standards‑Compliance section (ASME, API, AWS, ISO 9712, ISO/IEC 17020/24/25).
 - **Trusted‑by logo wall** — real client/institution logos (PIA, PPL, MPCL, FFC, FFBL,
-  PAC, NCNDT, SGS, PAEC).
+  PAC, NCNDT, SGS).
 - **Working contact form** — assembles an email to `info@ndeexperts.com` (cc
   `tahir.nazir@ndeexperts.com`) with a detailed service/course picker.
 - **Motion‑friendly & accessible** — scroll‑reveal animations, an animated “How We Work”

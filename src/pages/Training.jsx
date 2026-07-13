@@ -141,7 +141,7 @@ export default function Training() {
           <div className="section-header center">
             <div className="label">Organizations Trained</div>
             <h2 className="display-md">Trusted by Leading <span style={{ color: 'var(--cyan)' }}>Institutions</span></h2>
-            <p className="subheading">Over 1,000 professionals trained for Pakistan's foremost aviation, energy, fertilizer and nuclear organizations.</p>
+            <p className="subheading">Over 1,000 professionals trained for Pakistan's foremost aviation, energy, and fertilizer organizations.</p>
           </div>
           <TrustWall />
         </div>

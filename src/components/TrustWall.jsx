@@ -15,7 +15,7 @@ export const TRUST_ORGS = [
   { name: 'PAC', sub: 'Aeronautical', logo: '/logos/pac.png' },
   { name: 'NCNDT', sub: 'National Centre', logo: '/logos/ncndt.svg' },
   { name: 'SGS', sub: 'Inspection', logo: '/logos/sgs.png' },
-  { name: 'PAEC', sub: 'Nuclear', logo: '/logos/paec.png' },
+
 ];
 
 function TrustLogo({ org }) {

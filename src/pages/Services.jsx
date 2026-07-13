@@ -10,7 +10,6 @@ const TPI_PROJECTS = [
   "Qadirpur Gas Plant, Pakistan",
   "Uch Power Plant, Pakistan",
   "Rousch Power Plant, Pakistan",
-  "PAEC Nuclear Facilities",
   "International Projects — China",
   "International Projects — Saudi Arabia"
 ];
@@ -182,7 +181,7 @@ export default function Services() {
               </div>
               <div>
                 <h3>Independent Oversight You Can Trust</h3>
-                <p>TPI experience spanning oil &amp; gas, power, nuclear, and international projects across multiple continents.</p>
+                <p>TPI experience spanning oil &amp; gas, power, and international projects across multiple continents.</p>
               </div>
             </div>
             <div className="tpi-banner-right">
@@ -389,32 +388,7 @@ export default function Services() {
                 <span>Weld Quality Standards</span>
               </div>
             </div>
-            <div className="std-card">
-              <div className="std-card-icon">
-                <img src={asset("/logos/french.png")} alt="RCC-M Logo" />
-              </div>
-              <div className="std-card-code">RCC-M / RSE-M</div>
-              <div className="std-card-name">French Nuclear Codes</div>
-              <div className="std-card-list">
-                <span>RCC-M &mdash; PWR Reactor Codes</span>
-                <span>RSE-M &mdash; ISI of PWR Components</span>
-                <span>Nuclear Grade Inspections</span>
-                <span>PAEC Applications</span>
-              </div>
-            </div>
-            <div className="std-card" style={{ gridColumn: "span 2" }}>
-              <div className="std-card-icon">
-                <img src={asset("/logos/pnra.png")} alt="PNRA Logo" />
-              </div>
-              <div className="std-card-code">PNRA</div>
-              <div className="std-card-name">Pakistan Nuclear Regulatory Authority</div>
-              <div className="std-card-list" style={{ flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>
-                <span>PNRA Regulations</span>
-                <span>Radiation Safety</span>
-                <span>PNAC Accreditation Support</span>
-                <span>National Standards Compliance</span>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>

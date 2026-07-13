@@ -19,10 +19,8 @@ const STANDARD_GROUPS = [
     ],
   },
   {
-    title: 'Nuclear & International Codes',
+    title: 'International Codes',
     items: [
-      { code: 'RCC-M', desc: 'French design & construction code for nuclear components.' },
-      { code: 'RSE-M', desc: 'In-service inspection rules for nuclear power plants.' },
       { code: 'Chinese Codes', desc: 'National standards — NB/T & GB series.' },
     ],
   },
@@ -186,7 +184,7 @@ export default function Expertise() {
             <div className="ind-item reveal"><span className="ind-icon">&#127807;</span><span className="ind-name">Fertilizer</span></div>
             <div className="ind-item reveal"><span className="ind-icon">&#127981;</span><span className="ind-name">Manufacturing</span></div>
             <div className="ind-item reveal"><span className="ind-icon">&#9992;&#65039;</span><span className="ind-name">Aviation (PIA, PAC)</span></div>
-            <div className="ind-item reveal"><span className="ind-icon">&#9883;&#65039;</span><span className="ind-name">Nuclear (PAEC)</span></div>
+
             <div className="ind-item reveal"><span className="ind-icon">&#127959;&#65039;</span><span className="ind-name">Construction</span></div>
           </div>
         </div>
