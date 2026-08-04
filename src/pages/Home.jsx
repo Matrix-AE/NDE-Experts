@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroCanvas from '../components/HeroCanvas';
 import Counter from '../components/Counter';
@@ -29,6 +29,8 @@ const SECTORS = [
 
 export default function Home() {
   const [scrolledDown, setScrolledDown] = useState(false);
+  const [activeProcessStep, setActiveProcessStep] = useState(-1);
+  const processSectionRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +38,33 @@ export default function Home() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const processSection = processSectionRef.current;
+    if (!processSection) return undefined;
+
+    let timer;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        window.clearInterval(timer);
+        if (entry.isIntersecting) {
+          setActiveProcessStep(0);
+          timer = window.setInterval(() => {
+            setActiveProcessStep((step) => (step + 1) % 4);
+          }, 2000);
+        } else {
+          setActiveProcessStep(-1);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(processSection);
+    return () => {
+      window.clearInterval(timer);
+      observer.disconnect();
+    };
   }, []);
 
   // Re-scan for .reveal / .reveal-l / .reveal-r elements once this page mounts.
@@ -75,7 +104,7 @@ export default function Home() {
             </div>
 
             <div className="hero-actions reveal d5">
-              <Link to="/contact" className="btn btn-gradient btn-lg">
+              <Link to="/contact" className="btn btn-primary btn-lg">
                 Request Consultation
                 <span className="arrow-icon">→</span>
               </Link>
@@ -85,11 +114,11 @@ export default function Home() {
             </div>
 
             <div className="hero-chips reveal d6">
-              <span className="hero-chip">🔩 Oil &amp; Gas</span>
-              <span className="hero-chip">⚡ Power Gen</span>
-              <span className="hero-chip">🧪 Petrochemical</span>
-              <span className="hero-chip">🏭 Fertilizer</span>
-              <span className="hero-chip">✈️ Aviation</span>
+              <span className="hero-chip">Oil &amp; Gas</span>
+              <span className="hero-chip">Power Generation</span>
+              <span className="hero-chip">Petrochemical</span>
+              <span className="hero-chip">Fertilizer</span>
+              <span className="hero-chip">Aviation</span>
             </div>
           </div>
         </div>
@@ -328,7 +357,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════ HOW IT WORKS ══════════════════════════════ */}
-      <section className="section-py">
+      <section className="section-py" ref={processSectionRef}>
         <div className="container">
           <div className="section-header center">
             <div className="label">Process</div>
@@ -347,7 +376,7 @@ export default function Home() {
               { n: '03', t: 'Field Inspection', d: 'Qualified teams deploy advanced equipment for precise, documented examination.' },
               { n: '04', t: 'Technical Reporting', d: 'Comprehensive reports with findings, assessments, and actionable recommendations.' },
             ].map((p, i) => (
-              <div className={`process-step reveal d${i + 1}`} key={p.n}>
+              <div className={`process-step${activeProcessStep === i ? ' auto-active' : ''}`} key={p.n}>
                 <div className="step-num">
                   <svg className="step-ring" viewBox="0 0 56 56" aria-hidden="true">
                     <circle cx="28" cy="28" r="26" pathLength="1" />

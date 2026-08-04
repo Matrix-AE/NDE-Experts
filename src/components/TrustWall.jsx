@@ -6,7 +6,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 // /public/logos/ (Wikimedia sources); FFBL & NCNDT use a clean monochrome
 // placeholder mark until an official file is supplied. Any logo can be swapped
 // by replacing its file with the same name.
-export const TRUST_ORGS = [
+const TRUST_ORGS = [
   { name: 'PIA', sub: 'Aviation', logo: '/logos/pia.png' },
   { name: 'PPL', sub: 'Oil & Gas', logo: '/logos/ppl.png' },
   { name: 'MPCL', sub: 'Exploration', logo: '/logos/mpcl.png' },
@@ -42,14 +42,13 @@ function TrustLogo({ org }) {
 
 export default function TrustWall() {
   const scrollRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   // Auto-scroll logic
   useEffect(() => {
     let animationFrameId;
 
     const scroll = () => {
-      if (scrollRef.current && !isHovered) {
+      if (scrollRef.current) {
         scrollRef.current.scrollLeft += 1;
         
         // Infinite loop logic: if scrolled to the end of the first set, reset
@@ -65,7 +64,7 @@ export default function TrustWall() {
 
     animationFrameId = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isHovered]);
+  }, []);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -80,11 +79,7 @@ export default function TrustWall() {
   };
 
   return (
-    <div 
-      className="trust-wall-container" 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="trust-wall-container">
       <button className="trust-nav-btn left" onClick={scrollLeft} aria-label="Scroll left">
         <FiChevronLeft />
       </button>

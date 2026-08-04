@@ -21,7 +21,7 @@ export default function Footer() {
                     fontWeight: 600,
                   }}
                 >
-                  Inspecting Today, Assurring Tomorrow
+                  Inspecting Today, Assuring Tomorrow
                 </div>
               </div>
             </div>

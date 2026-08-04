@@ -28,10 +28,6 @@ export default function SectorCarousel({ sectors }) {
           const sign = Math.sign(offset);
           
           // CSS variables for 3D transforms
-          const scale = 1 - (absOffset * 0.12);
-          const translateX = offset * 220; 
-          const translateZ = -absOffset * 150;
-          const rotateY = sign * -30;
           const opacity = absOffset > 2 ? 0 : 1;
           const zIndex = 10 - absOffset;
           const isCenter = offset === 0;
@@ -41,7 +37,9 @@ export default function SectorCarousel({ sectors }) {
               key={sector.name}
               className={`coverflow-item ${isCenter ? 'active' : ''}`}
               style={{
-                transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                '--coverflow-offset': offset,
+                '--coverflow-distance': absOffset,
+                '--coverflow-direction': sign,
                 opacity,
                 zIndex,
                 backgroundImage: `url(${asset(sector.image)})`
