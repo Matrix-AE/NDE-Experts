@@ -4,6 +4,7 @@ import useStickyNav from '../hooks/useStickyNav';
 import logo from '../assets/logo/Logo1.png';
 
 const PRIMARY_LINKS = [
+  { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services', dropdown: 'services' },
   { to: '/projects', label: 'Projects' },
@@ -26,7 +27,6 @@ const MORE_LINKS = [
 ];
 
 const MOBILE_LINKS = [
-  { to: '/', label: 'Home' },
   ...PRIMARY_LINKS.map(({ to, label }) => ({ to, label })),
   ...MORE_LINKS,
 ];

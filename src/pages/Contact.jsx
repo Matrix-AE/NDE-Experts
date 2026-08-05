@@ -51,7 +51,7 @@ export default function Contact() {
       </section>
 
       {/* CONTACT GRID SECTION */}
-      <section className="section-pb">
+      <section className="section-pb section-after-hero">
         <div className="container">
           <div className="contact-grid">
 

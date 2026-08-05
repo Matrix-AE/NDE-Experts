@@ -141,7 +141,7 @@ export default function Projects() {
       </section>
 
       {/* STATS STRIP */}
-      <section className="section-pb">
+      <section className="section-pb section-after-hero">
         <div className="container">
           <div className="stats-accordion">
             <div className="stat-accordion-item reveal d1">
