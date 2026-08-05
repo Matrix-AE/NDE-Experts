@@ -10,6 +10,9 @@ const PRIMARY_LINKS = [
   { to: '/projects', label: 'Projects' },
   { to: '/expertise', label: 'Expertise' },
   { to: '/training', label: 'Training' },
+  { to: '/certifications', label: 'Certifications' },
+  { to: '/publications', label: 'Publications' },
+  { to: '/gallery', label: 'Gallery' },
 ];
 
 const SERVICE_LINKS = [
@@ -20,16 +23,7 @@ const SERVICE_LINKS = [
   { to: '/services#consulting', label: 'Consulting & Auditing' },
 ];
 
-const MORE_LINKS = [
-  { to: '/certifications', label: 'Certifications' },
-  { to: '/publications', label: 'Publications' },
-  { to: '/gallery', label: 'Gallery' },
-];
-
-const MOBILE_LINKS = [
-  ...PRIMARY_LINKS.map(({ to, label }) => ({ to, label })),
-  ...MORE_LINKS,
-];
+const MOBILE_LINKS = PRIMARY_LINKS.map(({ to, label }) => ({ to, label }));
 
 function DesktopDropdown({ label, to, links, active }) {
   return (
@@ -90,7 +84,6 @@ export default function Navbar() {
               </Link>
             ),
           )}
-          <DesktopDropdown label="More" links={MORE_LINKS} active={MORE_LINKS.some((link) => pathname === link.to)} />
         </div>
 
         <Link to="/contact" className="nav-cta">Request consultation <span aria-hidden="true">→</span></Link>

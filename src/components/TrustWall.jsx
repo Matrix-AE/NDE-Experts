@@ -3,7 +3,7 @@ import { asset } from '../lib/asset';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 // Organizations Tahir Nazir has served / trained. Real brand logos live in
-// /public/logos/ (Wikimedia sources); FFBL & NCNDT use a clean monochrome
+// /public/logos/ (Wikimedia sources); FFBL uses a clean monochrome
 // placeholder mark until an official file is supplied. Any logo can be swapped
 // by replacing its file with the same name.
 const TRUST_ORGS = [
@@ -12,8 +12,6 @@ const TRUST_ORGS = [
   { name: 'MPCL', sub: 'Exploration', logo: '/logos/mpcl.png' },
   { name: 'FFC', sub: 'Fertilizer', logo: '/logos/ffc.png' },
   { name: 'FFBL', sub: 'Fertilizer', logo: '/logos/ffbl.svg' },
-  { name: 'PAC', sub: 'Aeronautical', logo: '/logos/pac.png' },
-  { name: 'NCNDT', sub: 'National Centre', logo: '/logos/ncndt.svg' },
   { name: 'SGS', sub: 'Inspection', logo: '/logos/sgs.png' },
 
 ];

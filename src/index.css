@@ -294,6 +294,7 @@ section { position:relative; z-index:1; }
 .section-pt { padding-top:var(--section-gap); }
 .section-pb { padding-bottom:var(--section-gap); }
 .section-after-hero { padding-top:clamp(52px, 6vw, 84px); }
+.page-hero + .section-pb { padding-top:clamp(52px, 6vw, 84px); }
 
 .section-header { margin-bottom:64px; }
 .section-header.center { text-align:center; }
@@ -1160,6 +1161,7 @@ body {
   .nav-mobile-menu { top: 72px; height: calc(100dvh - 72px); }
   .container { padding-inline: 20px; }
   .section-after-hero { padding-top: 42px; }
+  .page-hero + .section-pb { padding-top: 42px; }
   .hero-content { padding: 124px 20px 66px; }
   .hero-label { gap: 8px; margin-bottom: 22px; }
   .hero-badge, .hero-cert-tag { font-size: 9px; letter-spacing: 1.4px; padding: 6px 10px; }
