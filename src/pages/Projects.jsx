@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import useFilterTabs from '../hooks/useFilterTabs';
 import Counter from '../components/Counter';
@@ -125,6 +126,7 @@ const PROJECTS = [
 
 export default function Projects() {
   const { active, setActive, isVisible } = useFilterTabs('all');
+  const reduceMotion = useReducedMotion();
   
   // Pass active as a dependency to re-trigger scroll reveal when filter changes.
   useScrollReveal([active]);
@@ -185,9 +187,18 @@ export default function Projects() {
             ))}
           </div>
 
-          <div className="proj-grid filter-container">
-            {PROJECTS.filter(p => isVisible(p.category) || p.category === 'all').map((proj) => (
-              <div key={proj.id} className={`proj-card reveal d${(proj.id % 6) + 1}`}>
+          <motion.div className="proj-grid filter-container" layout>
+            <AnimatePresence mode="popLayout">
+            {PROJECTS.filter(p => isVisible(p.category) || p.category === 'all').map((proj, index) => (
+              <motion.div
+                key={proj.id}
+                className="proj-card"
+                layout
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.22, delay: reduceMotion ? 0 : Math.min(index * 0.035, 0.18) }}
+              >
                 <div className="proj-card-img">
                   <div className="proj-card-img-placeholder">
                     {proj.svg}
@@ -205,9 +216,10 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 

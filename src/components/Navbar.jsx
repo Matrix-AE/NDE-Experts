@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import useStickyNav from '../hooks/useStickyNav';
 import logo from '../assets/logo/Logo1.png';
 
@@ -52,6 +53,7 @@ export default function Navbar() {
   const scrolled = useStickyNav();
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -100,7 +102,15 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`nav-mobile-menu${menuOpen ? ' open' : ''}`} id="nav-mobile">
+      <AnimatePresence>
+      {menuOpen && <motion.div
+        className="nav-mobile-menu open"
+        id="nav-mobile"
+        initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+      >
         <div className="nav-mobile-kicker">Navigate</div>
         {MOBILE_LINKS.map((link) => (
           <Link key={link.to} to={link.to} className={`nav-mobile-link${pathname === link.to ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>
@@ -108,7 +118,8 @@ export default function Navbar() {
           </Link>
         ))}
         <Link to="/contact" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Request consultation</Link>
-      </div>
+      </motion.div>}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import useFilterTabs from '../hooks/useFilterTabs';
 import './Gallery.css';
@@ -30,6 +31,7 @@ const GALLERY_ITEMS = [
 
 export default function Gallery() {
   const { active, setActive, isVisible } = useFilterTabs('all');
+  const reduceMotion = useReducedMotion();
   
   // Re-trigger reveal animation when filter changes
   useScrollReveal([active]);
@@ -60,18 +62,28 @@ export default function Gallery() {
             ))}
           </div>
 
-          <div className="gallery-grid filter-container">
-            {GALLERY_ITEMS.filter(item => isVisible(item.category)).map((item) => (
-              <div key={item.id} className="gallery-item reveal">
+          <motion.div className="gallery-grid filter-container" layout>
+            <AnimatePresence mode="popLayout">
+            {GALLERY_ITEMS.filter(item => isVisible(item.category)).map((item, index) => (
+              <motion.div
+                key={item.id}
+                className="gallery-item"
+                layout
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.22, delay: reduceMotion ? 0 : Math.min(index * 0.035, 0.18) }}
+              >
                 <div className="gallery-item-placeholder">
                   <span className="gallery-item-icon">{item.icon}</span>
                 </div>
                 <div className="gallery-overlay">
                   <span className="gallery-label">{item.label}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 
